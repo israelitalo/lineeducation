@@ -1,0 +1,172 @@
+/*css tela cadastro e login */
+body{
+	background-color: #DCDCDC;
+}
+.tamanho{
+	max-width: 300px;
+}
+.login {
+	font-size: 24px;
+	font-family: Arial;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+.cadastro{
+	font-size: 24px;
+	font-family: Arial;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+.area-form{
+	height: 50vh ;
+	background-color: #ffffff;
+	margin-top: 60px;
+	border-radius: 5px;
+	padding-bottom: 20px;
+}
+.link{
+	margin-left: 80px;
+	text-decoration: none;
+}
+/*css tela inicio */
+.imgProfile img{
+	width: 32px;
+    height: 32px;
+}
+.largura{
+	width: 100%;
+	margin-bottom: 30px;
+}
+.area_mensagem{
+	height: 30vh 100%;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	background-color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.cabeca_index{
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	background-color: #ffffff;
+	border: 1px solid #dcdcdc;
+}
+/*css tela cadastro de funcionario */
+.cabeca_cadastro_de_fun{
+	width: 100%;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	background-color: #ffffff;
+	border: 1px solid #dcdcdc;
+}
+.area_de_cadastro_fun{
+
+	height: 30vh 100%;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	background-color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.tamanho_input_cad{
+	max-width: 300px;
+}
+.tamanho_input2{
+	max-width: 690px;/* css para inpts nome, cargo, local de trabalho e endereço*/
+}
+/* css tela de relatorio de funcionario */
+.cabeca_relatorio_de_fun{
+	width: 100%;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	background-color: #ffffff;
+	border: 1px solid #dcdcdc;
+}
+.area_de_relatorio_fun{
+	height: 30vh 100%;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	background-color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 20px;
+}
+.formulario_alinhamento_fun{
+	margin-top: 20px;	
+	margin-bottom: 20px;
+}
+.InputMatricula_fun{
+	height: 36.5px;
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	padding: 5px;
+}
+/* css tela de cadastro de requerimento*/
+.cabeca_cadastro_de_req{
+	width: 100%;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	background-color: #ffffff;
+	border: 1px solid #dcdcdc;
+}
+.area_de_cadastro_req{
+	height: 30vh 100%;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	background-color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.tamanho_input_req{ /* css para codigo e matricula*/
+	max-width: 200px;
+}
+.tamanho_input_req2{/* css para inputs de data*/
+	max-width: 200px;
+	margin-right: 20px;
+}
+.espaco{
+	margin-right: 10px;
+}
+.tamanho_input_req3{
+	max-width: 690px;	
+}
+/* css tela de relatorio de requerimento*/
+.cabeca_relatorio_de_req{
+	width: 100%;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	background-color: #ffffff;
+	border: 1px solid #DCDCDC;
+}
+.area_de_relatorio_req{
+	height: 30vh 100%;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	background-color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 20px;
+}
+.formulario_alinhamento{
+	margin-top: 20px;	
+	margin-bottom: 20px;
+}
+.InputMatricula{
+	height: 36.5px;
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	padding: 5px;
+}
+.tamanho_botao{
+	padding: 0px;
+}
