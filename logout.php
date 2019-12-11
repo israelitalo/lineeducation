@@ -1,7 +1,9 @@
 <?php
+/*
+ * Aqui não pode conter o session_destroy(), porque com ele ele não consegue chamar a msg.
+ */
 session_start();
 $_SESSION['msg'] = "Deslogado com sucesso.";
-unset($_SESSION['id'], $_SESSION['login']);
 header('Location: tela_login.php');
-session_destroy();
+unset($_SESSION['id'], $_SESSION['login']);
 exit();
