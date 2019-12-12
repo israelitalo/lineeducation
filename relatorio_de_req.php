@@ -1,53 +1,38 @@
 <?php
+    session_start();
     include 'verifica_usuario_logado.php';
 ?>
-
 <!DOCTYPE html>
-
 <html>
-
 	<head>
-
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=width-device, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		
 		<title>Relatório de Requerimento</title>
-
 	</head>
-
 	<body>
-
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div height="72">	
 				<div class="dropdown ">
-					<div class="imgProfile"> <a href="inicio.html"><img class="img-fluid" src="img/default.png"></a></div>
-						<a href="" class="dropdown-toggle" data-toggle="dropdown"></a>	
-
+					<div class="imgProfile"> <a href="inicio.php"><img class="img-fluid" src="img/default.png"></a></div>
+						<a href="" class="dropdown-toggle" data-toggle="dropdown"></a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="logout.php">Sair</a>
 					</div>
 				</div>
-			</div>	
-			
+			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
 			<div class="collapse navbar-collapse" id="navbarSite">
-				
 				<ul class="navbar-nav">
-
 					<li class="nav-item active" style="padding-left: 20px">
 						<a class="nav-link" href="">Relatório de Requerimento<span class="sr-only">(página atual)</span></a>
 					</li>
-
 				</ul>
 			</div>
-
 		</nav>
-
 		<div class="container-fluid">
 			
 			<div class="row justify-content-center align-items-center"><!--Grid -->
@@ -121,13 +106,8 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-
-
 	</body>
-
 </html>

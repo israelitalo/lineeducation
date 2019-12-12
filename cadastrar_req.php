@@ -16,8 +16,8 @@ $result = mysqli_query($conexao, $sql);
 $row = mysqli_fetch_assoc($result);
 
 if($row['total'] == 0) {
-	$_SESSION['usuario_existe'] = true;
-	header('Location: cadastro_de_req.html');
+	$_SESSION['msg'] = "Nº de matrícula inválido";
+	header('Location: cadastro_de_req.php');
 	exit;
 }
 
@@ -25,7 +25,7 @@ $sql = "INSERT INTO requerimento ( req_fun_matricula, req_despacho, req_descrica
 
 if($conexao->query($sql) === TRUE) {
 	$_SESSION['status_cadastro'] = true;
-	header('Location: cadastro_de_req.html');
+	header('Location: cadastro_de_req.php');
 exit;
 }
 
