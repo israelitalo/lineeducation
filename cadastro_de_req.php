@@ -8,6 +8,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=width-device, initial-scale=1, shrink-to-fit=no">
+        <script type="text/javascript" src="script.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<title>Cadastro de Requerimento</title>
@@ -63,22 +64,24 @@
 						<div class="font-weight-normal h4 text-center">
 								Dados de Requerimento
 						</div><br>
+
+                        <!--Início do Formulário-->
 						<form action="cadastrar_req.php" method="POST">
 							<div class="input-group">
 								<!--input de matricula do requerente -->
-                                <select class="form-control" type="number" name="req_fun_matricula"
-                                        required="number" style="float: left; margin-right: auto">
+                                <select class='form-control' type='number' name='req_fun_matricula' onchange="mudouOpcao()"
+                                        required='number' style='float: left; margin-right: auto'>
                                     <option>Matrícula</option>
                                     <!--Coletando as matrículas do banco de dados-->
-                                    <?php $sql = "SELECT fun_matricula, fun_nome FROM funcionario";
+                                     <?php $sql = 'SELECT fun_matricula, fun_nome FROM funcionario';
                                         $result = mysqli_query($conexao, $sql);
                                         while($row = mysqli_fetch_assoc($result)){?>
-                                    <option><?php echo $row['fun_matricula'];?></option>
-                                    <?php }?>
+                                    <option> <?php echo $row['fun_matricula'];?></option>
+                                <?php }?>
                                 </select>
                                 <!--Atualizar campo conforme seleção da matrícula do funcionário, no campo acima-->
                                 <!--Não está funcionando-->
-                                <input class="form-control" name="nome_funcionario" value="<?php echo $row['fun_nome'];?>" placeholder="Nome funcionário" type="text" disabled
+                                <input class="form-control" id="funcionario" name="nome_funcionario" type="text"
                                 style="float: right; margin-left: 20px">
 							</div><br>
 							<div class="form-group"><!--input com opções de tipo de req. -->
@@ -118,5 +121,5 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-	</body>
+    </body>
 </html>

@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=width-device, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="https://kit.fontawesome.com/68d49f23cf.js" crossorigin="anonymous"></script>
         <title>Relatório de Funcionário</title>
     </head>
     <body>
@@ -37,31 +38,39 @@
         <div class="container-fluid">
             <div class="row justify-content-center align-items-center"><!--Grid -->
                 <div class="col-12 justify-content-center align-items-center">
-                    <!--class "cabeca_relatorio_de_fun" editar estilo do cabeçalho da coluna  -->
-                    <div class="cabeca_relatorio_de_fun">
-                        <button class="btn btn-secondary"><img src="img/report.png" style="padding-right: 20px"><span>Relatório de Funcionário</span></button>
-                    </div>
                     <!--Corpo da coluna onde fica os inputs -->
-                    <div class="area_de_relatorio_fun">
-                        <div>
-                            <form method="POST">
-                                <!-- class formulario_alinhamento para alinhar a div no centro -->
-                                <div class="input-group formulario_alinhamento_fun">
-                                    <div>
-                                        <!-- class InputMatricula para dar um estilo a mais para o input -->
-                                        <input class="InputMatricula_fun" type="text" name="busca" placeholder="Busca por Matricula">
-                                        <button type="submit" class="btn btn-light tamanho_botao"><img src="img/search.png"></button><!--class tamanho_botao para dar estilo ao botao-->
-                                    </div>
-                                    <div style="margin-left: 50px"><!--botao de imprimir -->
-                                        <button type="submit" class="btn btn-secondary">Imprimir</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="area_de_relatorio_fun"><br>
                         <div class="table-responsive"><!--tabela de relatorio -->
+                            <div>
+                                <a class="btn btn-success" href="cadastro_de_fun.php" style="float: left; margin-right: 10px"><i class="fas fa-plus"></i> Adicionar</a>
+                                <button type="submit" class="btn btn-dark" style="float: left; margin-right: 10px">Imprimir</button>
+                                <form method="POST" style="float: left">
+                                    <input class="InputMatricula_fun" type="text" name="busca" placeholder="Buscar por Matricula" style="margin-right: 5px">
+                                    <button type="submit" class="btn btn-dark" style="height: 35px; padding-top: 5px; margin-right: 10px"><i class="fas fa-search"></i></button><!--class tamanho_botao para dar estilo ao botao-->
+                                </form>
+                            </div></br></br>
+                            <?php
+                                if(isset($_SESSION['msg'])){
+                                    $msg = $_SESSION['msg'];
+                                    //echo "<div class='alert alert-info' role='alert'>$msg</div>";
+                                    if($msg == "Funcionário excluído com sucesso."){
+                                        echo "<div class='alert alert-info' role='alert'>$msg</div>";
+                                    }
+                                    else if($msg == "Funcionário alterado com sucesso."){
+                                        echo "<div class='alert alert-info' role='alert'>$msg</div>";
+                                    }
+                                    else if($msg == "Funcionário cadastrado com sucesso"){
+                                        echo "<div class='alert alert-info' role='alert'>$msg</div>";
+                                    }
+                                    else{
+                                        echo "<div class='alert alert-danger' role='alert'>$msg</div>";
+                                    }
+                                    unset($_SESSION['msg']);
+                                }
+                            ?><br>
                             <table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <!-- -->
-                                <thead class="thead-light">
+                                <thead class="thead-dark">
                                 <tr>
                                     <th>Matricula</th>
                                     <th>Nome</th>
@@ -70,12 +79,15 @@
                                     <th>RG</th>
                                     <th>CPF</th>
                                     <th>Telefone</th>
+                                    <th>
+                                        Operações
+                                    </th>
                                 </tr>
                                 </thead>
                                   <?php
                                   //* Verificando se o campo busca não está mandando nenhum valor
-                                  if($_POST['busca'] == ""){//O navegador inicia a página com excessão nessa linha, mas não sei porquê.
-                                      $sql = "SELECT `fun_matricula`, `fun_nome`, `fun_celular`, `fun_rg`, `fun_cpf`, `fun_cargo`, `fun_local_trabalho` FROM `funcionario`";
+                                  if(empty($_POST['busca'])){//Verificando se busca está vazio.
+                                      $sql = "SELECT * FROM funcionario";
                                   }
                                   else{
                                       $busca = ($_POST['busca']);
@@ -92,6 +104,12 @@
                                     <td><?php echo $row['fun_rg'];?></td>
                                     <td><?php echo $row['fun_cpf'];?></td>
                                     <td><?php echo $row['fun_celular'];?></td>
+                                    <td>
+                                        <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
+                                            <i class="fas fa-pencil-alt"></i></a>
+                                        <a class="btn btn-danger" style="float: left" href="excluir_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
+                                            <i class="fas fa-trash"></i></a>
+                                    </td>
                                 </tr>
                                 </tbody>
                                 <?php }?>
