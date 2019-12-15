@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="https://kit.fontawesome.com/68d49f23cf.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <title>Relatório de Funcionário</title>
     </head>
     <body>
@@ -107,8 +108,9 @@
                                     <td>
                                         <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
                                             <i class="fas fa-pencil-alt"></i></a>
-                                        <a class="btn btn-danger" style="float: left" href="excluir_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
+                                        <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
                                             <i class="fas fa-trash"></i></a>
+                                        <button class="btn btn-outline-secondary view_data" id="<?php echo $row['fun_matricula'];?>" style="float: left"><i class="fas fa-list"></i></button>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -119,6 +121,46 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="visualizarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detalhes do funcionário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <span id="conteudoFun"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Tentativa do botão visualizar-->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(document).on('click','.view_data', function () {
+                    var fun_id = $(this).attr("id");
+                    //alert(fun_id);
+                    //Verificar se há valor na variável fun_id.
+                    if(fun_id !== ""){
+                        var dados = {
+                            fun_id: fun_id
+                        };
+                        //Modal php
+                        $.post('visualizar_fun.php', dados, function (retorna) {
+                            //Carregar conteúdo para o usuário
+                            $('#conteudoFun').html(retorna);
+                            $('#visualizarModal').modal('show');
+                        });
+                    }
+                });
+            });
+        </script>
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     </body>

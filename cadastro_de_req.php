@@ -11,6 +11,7 @@
         <script type="text/javascript" src="script.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<title>Cadastro de Requerimento</title>
 	</head>
 	<body>
