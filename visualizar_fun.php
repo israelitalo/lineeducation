@@ -1,4 +1,7 @@
 <?php
+
+    session_start();
+    include 'verifica_usuario_logado.php';
     if(isset($_POST['fun_id'])){
         include 'conexao.php';
 
