@@ -34,7 +34,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div height="72">
         <div class="dropdown ">
-            <div class="imgProfile"> <a href="inicio.php"><img class="img-fluid" src="img/default.png"></a></div>
+            <div class="imgProfile"> <a href="index.php"><img class="img-fluid" src="img/default.png"></a></div>
             <a href="" class="dropdown-toggle" data-toggle="dropdown"></a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="logout.php">Sair</a>

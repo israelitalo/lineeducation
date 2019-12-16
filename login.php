@@ -19,7 +19,7 @@ if($row == 1){
     $_SESSION['id'] = $stmt['adm_id'];
     $_SESSION['login'] = $stmt['adm_login'];
     $_SESSION['msg'] = "Bem vindo, ".$_SESSION['login']."!";
-	header('Location: inicio.php');
+	header('Location: index.php');
 	exit();
 }else{
 	$_SESSION['msg'] = "Login ou senha incorretos.";
