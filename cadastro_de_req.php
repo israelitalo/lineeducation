@@ -15,19 +15,6 @@
 		<title>Cadastro de Requerimento</title>
 	</head>
 	<body>
-        <!--Não está funcionando-->
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("input[name='req_fun_matricula']").blur(function () {
-                    var $nomeFuncionario = $("input[name='nome_funcionario']");
-                    $.getJSON('function.php', {
-                        req_fun_matricula: $(this).val()
-                    }, function (json) {
-                        $nomeFuncionario.val(json.nome_funcionario);
-                    });
-                });
-            });
-        </script>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div height="72">	
 				<div class="dropdown ">
@@ -65,24 +52,22 @@
 						<div class="font-weight-normal h4 text-center">
 								Dados de Requerimento
 						</div><br>
-
                         <!--Início do Formulário-->
 						<form action="cadastrar_req.php" method="POST">
 							<div class="input-group">
 								<!--input de matricula do requerente -->
-                                <select class='form-control' type='number' name='req_fun_matricula' onchange="mudouOpcao()"
-                                        required='number' style='float: left; margin-right: auto'>
+                                <select class='form-control view_data' id="fun_matricula" type='number' name='req_fun_matricula' required='number' style='float: left; margin-right: auto'>
                                     <option>Matrícula</option>
                                     <!--Coletando as matrículas do banco de dados-->
                                      <?php $sql = 'SELECT fun_matricula, fun_nome FROM funcionario';
                                         $result = mysqli_query($conexao, $sql);
                                         while($row = mysqli_fetch_assoc($result)){?>
-                                    <option> <?php echo $row['fun_matricula'];?></option>
+                                    <option><?php echo $row['fun_matricula'];?></option>
                                 <?php }?>
                                 </select>
                                 <!--Atualizar campo conforme seleção da matrícula do funcionário, no campo acima-->
                                 <!--Não está funcionando-->
-                                <input class="form-control" id="funcionario" name="nome_funcionario" type="text"
+                                <input class="form-control" id="campo_funcionario" name="nome_funcionario" type="text" placeholder="Nome do funcionário"
                                 style="float: right; margin-left: 20px">
 							</div><br>
 							<div class="form-group"><!--input com opções de tipo de req. -->
@@ -120,6 +105,37 @@
 				</div>
 			</div>
 		</div>
+        <!--Não está funcionando-->
+        <script type="text/javascript">
+            /*$(document).ready(function () {
+                $("input[name='req_fun_matricula']").blur(function () {
+                    var $nomeFuncionario = $("input[name='nome_funcionario']");
+                    $.getJSON('function.php', {
+                        req_fun_matricula: $(this).val()
+                    }, function (json) {
+                        $nomeFuncionario.val(json.nome_funcionario);
+                    });
+                });
+            });*/
+            //Não está funcionando
+            /*$(document).ready(function () {
+                $(document).on('change','.view_data', function () {
+                    var fun_id = $(this).attr("id");
+                    alert(fun_id);
+                    //Verificar se há valor na variável fun_id.
+                    if(fun_id !== ""){
+                        var dados = {
+                            fun_id: fun_id
+                        };
+                        //Modal php
+                        $.post('function.php', dados, function (retorna) {
+                            //Carregar conteúdo para o usuário
+                            $('#campo_funcionario').html(retorna);
+                        });
+                    }
+                });
+            });*/
+        </script>
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     </body>
