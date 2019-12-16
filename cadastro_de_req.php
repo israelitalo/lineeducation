@@ -65,10 +65,29 @@
                                     <option><?php echo $row['fun_matricula'];?></option>
                                 <?php }?>
                                 </select>
-                                <!--Atualizar campo conforme seleção da matrícula do funcionário, no campo acima-->
-                                <!--Não está funcionando-->
                                 <input class="form-control" id="campo_funcionario" name="nome_funcionario" type="text" placeholder="Nome do funcionário"
                                 style="float: right; margin-left: 20px">
+                                <!--Atualizar campo com nome do funcionário conforme seleção da matrícula do funcionário no campo matrícula-->
+                                <script>
+                                    $("#fun_matricula").change(function (){
+                                        var input = $(this);
+                                        //Coletando a matrícula selecionada no campo de matrícula do funcionário.
+                                        var matriculaJs = input.val();
+                                        if(matriculaJs === "Matrícula"){
+                                            alert("Selecione uma matrícula no campo Matrícula.");
+                                        }
+                                        /*
+                                           * Enviando post, para o arquivo listar_usuario.php o parametro matricula, que recebeu
+                                           * o valor digitado no campo de id = fun_matricula, para buscar o nome do funcionário
+                                           * representando por essa matrícula.
+                                         */
+                                        $.post('listar_usuario.php', {
+                                            matricula: matriculaJs}, function (retorna) {//Em retorna pode ser qualquer nome.
+                                            /*Setando o valor retornado pelo listar_usuario.php ao input que recebe o nome
+                                            do funcionário.*/
+                                            $("#campo_funcionario").val(retorna);});
+                                    });
+                                </script>
 							</div><br>
 							<div class="form-group"><!--input com opções de tipo de req. -->
 							    <select class="form-control" name="req_tipo_req" >
@@ -105,37 +124,6 @@
 				</div>
 			</div>
 		</div>
-        <!--Não está funcionando-->
-        <script type="text/javascript">
-            /*$(document).ready(function () {
-                $("input[name='req_fun_matricula']").blur(function () {
-                    var $nomeFuncionario = $("input[name='nome_funcionario']");
-                    $.getJSON('function.php', {
-                        req_fun_matricula: $(this).val()
-                    }, function (json) {
-                        $nomeFuncionario.val(json.nome_funcionario);
-                    });
-                });
-            });*/
-            //Não está funcionando
-            /*$(document).ready(function () {
-                $(document).on('change','.view_data', function () {
-                    var fun_id = $(this).attr("id");
-                    alert(fun_id);
-                    //Verificar se há valor na variável fun_id.
-                    if(fun_id !== ""){
-                        var dados = {
-                            fun_id: fun_id
-                        };
-                        //Modal php
-                        $.post('function.php', dados, function (retorna) {
-                            //Carregar conteúdo para o usuário
-                            $('#campo_funcionario').html(retorna);
-                        });
-                    }
-                });
-            });*/
-        </script>
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     </body>
