@@ -11,6 +11,7 @@
         <script type="text/javascript" src="script.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="https://kit.fontawesome.com/68d49f23cf.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<title>Cadastro de Requerimento</title>
 	</head>
@@ -39,12 +40,17 @@
         <?php
             if(isset($_SESSION['msg'])){
                 $msg = $_SESSION['msg'];
-                echo "<div class='alert alert-danger' role='alert'>$msg</div>";
+                if($msg == "Requerimento cadastrado com sucesso."){
+                    echo "<div class='alert alert-info' role='alert'>$msg</div>";
+                }
+                else{
+                    echo "<div class='alert alert-danger' role='alert'>$msg</div>";
+                }
                 unset($_SESSION['msg']);
             }
         ?>
-		<div class="container-fluid" style="padding-top: 20px">
-			<div class="row justify-content-center align-items-center"><!--Grid -->
+		<div class="container-fluid">
+			<div class="row justify-content-center align-items-center" style="margin-top: 10px"><!--Grid -->
 				<div class="col-sm-7 justify-content-center align-items-center">
 					<!--class "cabeca_relatorio_de_fun" editar estilo do cabeçalho da coluna  -->
 					<!--Corpo da coluna onde fica os inputs -->
@@ -66,7 +72,7 @@
                                 <?php }?>
                                 </select>
                                 <input class="form-control" id="campo_funcionario" name="nome_funcionario" type="text" placeholder="Nome do funcionário"
-                                style="float: right; margin-left: 20px">
+                                style="float: right; margin-left: 20px" disabled>
                                 <!--Atualizar campo com nome do funcionário conforme seleção da matrícula do funcionário no campo matrícula-->
                                 <script>
                                     $("#fun_matricula").change(function (){
@@ -117,7 +123,7 @@
 							</div><br>
                             <div class="input-group">
 								<!--Botão de salvar -->
-								<button type="submit" class="btn btn-success"><img src="img/save.png" style="padding-right: 10px"><span>Salvar</span></button>
+								<button type="submit" class="btn btn-success"><i class="far fa-save"></i> Salvar</button>
 							</div>
 						</form>
 					</div>

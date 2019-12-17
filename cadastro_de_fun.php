@@ -35,7 +35,7 @@
 			</div>
 		</nav>
 		<div class="container-fluid">
-			<div class="row justify-content-center align-items-center"><!--Grid -->
+			<div class="row justify-content-center align-items-center" style="margin-top: 10px"><!--Grid -->
 				<div class="col-sm-7 justify-content-center align-items-center">
                     <?php
                         if(isset($_SESSION['msg'])){

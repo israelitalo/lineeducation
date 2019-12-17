@@ -37,23 +37,23 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <div class="row justify-content-center align-items-center"><!--Grid -->
+            <div class="row justify-content-center align-items-center" style="margin-top: 10px"><!--Grid -->
                 <div class="col-12 justify-content-center align-items-center">
                     <!--Corpo da coluna onde fica os inputs -->
                     <div class="area_de_relatorio_fun"><br>
                         <div class="table-responsive"><!--tabela de relatorio -->
                             <div>
-                                <a class="btn btn-success" href="cadastro_de_fun.php" style="float: left; margin-right: 10px"><i class="fas fa-plus"></i> Adicionar</a>
+                                <a class="btn btn-success" href="cadastro_de_req.php" style="float: left; margin-right: 10px"><i class="fas fa-plus"></i> Adicionar</a>
                                 <button type="submit" class="btn btn-dark" style="float: left; margin-right: 10px">Imprimir</button>
                                 <form method="POST" style="float: left">
                                     <input class="InputMatricula_fun" type="text" name="busca" placeholder="Buscar por Matricula" style="margin-right: 5px">
-                                    <button type="submit" class="btn btn-dark" style="height: 35px; padding-top: 5px; margin-right: 10px"><i class="fas fa-search"></i></button><!--class tamanho_botao para dar estilo ao botao-->
+                                    <button type="submit" class="btn btn-dark" style="height: 35px; padding-top: 5px; margin-right: 10px"><i class="fas fa-search"></i></button>
                                 </form>
                             </div></br></br>
                             <?php
                                 if(isset($_SESSION['msg'])){
                                     $msg = $_SESSION['msg'];
-                                    //echo "<div class='alert alert-info' role='alert'>$msg</div>";
+
                                     if($msg == "Funcionário excluído com sucesso."){
                                         echo "<div class='alert alert-info' role='alert'>$msg</div>";
                                     }
@@ -106,11 +106,13 @@
                                     <td><?php echo $row['fun_cpf'];?></td>
                                     <td><?php echo $row['fun_celular'];?></td>
                                     <td>
-                                        <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
-                                            <i class="fas fa-pencil-alt"></i></a>
-                                        <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
-                                            <i class="fas fa-trash"></i></a>
-                                        <button class="btn btn-outline-secondary view_data" id="<?php echo $row['fun_matricula'];?>" style="float: left"><i class="fas fa-list"></i></button>
+                                        <div class="row justify-content-center align-items-center">
+                                            <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
+                                                <i class="fas fa-pencil-alt"></i></a>
+                                            <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
+                                                <i class="fas fa-trash"></i></a>
+                                            <button class="btn btn-outline-secondary view_data" id="<?php echo $row['fun_matricula'];?>" style="float: left"><i class="fas fa-list"></i></button>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>

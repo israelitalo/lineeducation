@@ -49,8 +49,8 @@
         }
         ?>
 		<div class="container-fluid d-flex justify-content-center">
-			<div class="row justify-content-center align-items-center " style="margin-top: 15px">
-				<div class="col-sm-6 justify-content-center align-items-center"><!--coluna de funcionario-->					
+			<div class="row justify-content-center align-items-center " style="margin-top: 10px">
+				<div class="col-sm-6 justify-content-center align-items-center"><!--coluna de funcionario-->
 					<div class="cabeca_index"><!--titulo da box -->		
 					 	<button class="btn btn-primary" ><img src="img/funconario.png" style="padding-right: 20px"><span>Funcionario</span></button>
 					</div>	

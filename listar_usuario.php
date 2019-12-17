@@ -11,8 +11,5 @@
                 $resultado = $row['fun_nome'];
                 echo $resultado;
             }
-            else{
-                echo "funcionário não cadastrado";
-            }
         }
 ?>

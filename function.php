@@ -1,6 +1,6 @@
 <?php
     /*
-     * Não está funcionando
+     * Não está sendo utilizado.
      * */
     session_start();
     include 'verifica_usuario_logado.php';

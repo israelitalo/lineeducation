@@ -1,6 +1,7 @@
 <?php
     session_start();
     include 'verifica_usuario_logado.php';
+    include "conexao.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,7 +10,9 @@
 		<meta name="viewport" content="width=width-device, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<title>Relatório de Requerimento</title>
+        <script src="https://kit.fontawesome.com/68d49f23cf.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>Relatório de Requerimento</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -33,74 +36,113 @@
 				</ul>
 			</div>
 		</nav>
-		<div class="container-fluid">
-			
-			<div class="row justify-content-center align-items-center"><!--Grid -->
-				<div class="col-sm-12 justify-content-center align-items-center">
-					<!--class "cabeca_relatorio_de_req" editar estilo do cabeçalho da coluna  -->
-					
-					<!--Corpo da coluna onde fica os relatorio -->
-					<div class="area_de_relatorio_req">
-						<div class="font-weight-normal h4 text-center">
-							Relatório de Requerimento
-						</div><br>
-						<div>
-							<form method="POST">
-								<!-- class formulario_alinhamento para alinhar a div no centro -->
-								<div class="input-group formulario_alinhamento">
-									<div>
-										<!-- class InputMatricula para dar um estilo a mais para o input -->
-										<input class="InputMatricula" type="text" name="" placeholder="Busca por Matricula">
-										<button type="submit" class="btn btn-light tamanho_botao"><img src="img/search.png"></button><!--class tamanho_botao para dar estilo ao botao-->
-									</div>
+        <?php
+        if(isset($_SESSION['msg'])){
+            $msg = $_SESSION['msg'];
 
-									<div style="margin-left: 50px">
-										<!-- class InputMatricula para dar um estilo a mais para o input -->
-										<input class="InputMatricula" type="text" name="" placeholder="Busca por Número">
-										<button type="submit" class="btn btn-light tamanho_botao"><img src="img/search.png"></button><!--class tamanho_botao para dar estilo ao botao-->
-									</div>	
-									<div style="margin-left: 50px">
-										<!--Botão de editar -->
-										<button type="submit" class="btn btn-primary"><img src="img/edit.png" style="padding-right: 10px"><span>Editar</span></button>
-										
-										<!--Botão de excluir -->
-										<button type="submit" class="btn btn-danger"><img src="img/delete.png" style="padding-right: 10px"><span>Excluir</span></button>
-											
-										<!--botao de imprimir -->
-										<button type="submit" class="btn btn-secondary"><img src="img/print.png" style="padding-right: 10px"><span>Imprimir</span></button>
-									</div>
-								</div>
-							</form>
-						</div>
+            if($msg == "Requerimento excluído com sucesso."){
+                echo "<div class='alert alert-info' role='alert'>$msg</div>";
+            }
+            else if($msg == "Requerimento alterado com sucesso."){
+                echo "<div class='alert alert-info' role='alert'>$msg</div>";
+            }
+            else if($msg == "Requerimento cadastrado com sucesso"){
+                echo "<div class='alert alert-info' role='alert'>$msg</div>";
+            }
+            else{
+                echo "<div class='alert alert-danger' role='alert'>$msg</div>";
+            }
+            unset($_SESSION['msg']);
+        }
+        ?>
+		<div class="container-fluid">
+			<div class="row justify-content-center align-items-center" style="margin-top: 10px"><!--Grid -->
+				<div class="col-sm-12 justify-content-center align-items-center">
+					<!--Corpo da coluna onde fica os relatorio -->
+					<div class="area_de_relatorio_req"><br>
 						<div class="table-responsive"><!--tabela de relatorio -->
+                            <div class="col-12 row justify-content-end">
+                                <a class="btn btn-success" href="cadastro_de_fun.php" style="float: left; margin-right: 10px"><i class="fas fa-plus"></i> Adicionar</a>
+                                <button type="submit" class="btn btn-dark" style="float: left; margin-right: 10px">Imprimir</button>
+                            </div>
+                            <div class="col-4">
+                                <form method="POST" style="float: left">
+                                    <input type="checkbox" id="check" name="checkbox_matricula" style="cursor: pointer" value="ativo">
+                                    <label for="checkbox_matricula">Matrícula</label>
+                                    <input type="checkbox" id="check_req_id" name="checkbox_req_id" style="cursor: pointer; margin-left: 5px" value="ativo">
+                                    <label for="checkbox_matricula">Requerimento</label><br>
+                                    <input class="InputMatricula_fun" type="text" name="busca" placeholder="Buscar por Matrícula" style="margin-right: 5px">
+                                    <button type="submit" class="btn btn-dark" style="height: 35px; padding-top: 5px; margin-right: 10px"><i class="fas fa-search"></i></button>
+                                </form><br>
+                            </div></br></br><br>
 			              <table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
-			              	<!-- -->
 			                <thead class="thead-dark">
 			                  <tr>
-			                  	<th>Matricula</th>
-			                  	<th>Nome</th>
-			                    <th>Local de Trabalho</th>
-			                    <th>RG</th>
-			                    <th>Código</th>
-			                    <th>Requerimento</th>
+                                <th>Código</th>
+                                <th>Matrícula</th>
+			                  	<th>Funcionário</th>
+                                <th>Requerimento</th>
+                                <th>Local de Trabalho</th>
 			                    <th>Solicitação</th>
 			                    <th>Deferimento</th>
 			                    <th>Volta</th>
+                                <th>Operações</th>
 			                  </tr>
 			                </thead>
+                              <?php
+                              if(isset($_POST['busca']) && isset($_POST['checkbox_req_id']) && isset($_POST['checkbox_matricula'])){
+                                  $_SESSION['msg'] = "Selecione apenas um filtro de busca: matrícula ou requerimento.";
+                                  header("Location: relatorio_de_req.php");
+                              }
+                              else if(empty($_POST['busca']) && empty($_POST['checkbox_matricula']) || empty($_POST['busca']) && empty($_POST['checkbox_req_id'])){
+                                  $sql = "SELECT * FROM requerimento";
+                              }
+                              else if(isset($_POST['busca']) && isset($_POST['checkbox_matricula'])){
+                                  $matricula = $_POST['busca'];
+                                  $sql = "SELECT * FROM requerimento WHERE req_fun_matricula = '$matricula'";
+                              }
+                              else if(isset($_POST['busca']) && isset($_POST['checkbox_req_id'])){
+                                  $req_id = $_POST['busca'];
+                                  $sql = "SELECT * FROM requerimento WHERE req_id = '$req_id'";
+                              }
+                              else if(isset($_POST['busca']) && empty($_POST['checkbox_matricula'])){
+                                  $_SESSION['msg'] = "Para pesquisar por matrícula, selecione a opção matrícula.";
+                                  header("Location: relatorio_de_req.php");
+                              }
+                              else if(isset($_POST['busca']) && empty($_POST['checkbox_req_id'])){
+                                  $_SESSION['msg'] = "Para pesquisar por nº de requerimento, selecione a opção requerimento.";
+                                  header("Location: relatorio_de_req.php");
+                              }
+                              $stmt = mysqli_query($conexao, $sql);
+                              while ($row = mysqli_fetch_array($stmt)){?>
 			                <tbody>
-							  <tr><!--informaçoes meramente demonstrativas -->
-						       	<th>6</th>
-						       	<td>Jose cicero ferreira</td>
-						       	<td>escola jaoao correia</td>
-							    <td>2220897</td>
-							    <td>000026</td>
-							    <td>licença medica</td>
-							    <td>13/04/2006</td>
-							    <td>12/03/2010</td>
-							    <td>30/05/2020</td>
-							  </tr>
+                            <tr>
+                                <td><?php echo $row['req_id'];?></td>
+                                <th><?php echo  $row['req_fun_matricula'];?></th>
+                                <?php
+                                    $sqlNome = "SELECT * FROM funcionario f, requerimento r WHERE r.req_fun_matricula
+                                    ='".$row['req_fun_matricula']."' AND f.fun_matricula = '".$row['req_fun_matricula']."'";
+                                    $stmtNome = mysqli_query($conexao, $sqlNome);
+                                    $rowNome = mysqli_fetch_array($stmtNome);
+                                ?>
+                                <td><?php echo $rowNome['fun_nome'];?></td>
+                                <td><?php echo $row['req_tipo_req'];?></td>
+                                <td><?php echo $rowNome['fun_local_trabalho'];?></td>
+                                <td><?php echo date('d/m/Y', strtotime($row['req_entrada']));?></td>
+                                <td><?php echo date('d/m/Y', strtotime($rowNome['req_deferimento']));?></td>
+                                <td><?php echo date('d/m/Y', strtotime($rowNome['req_volta']));?></td>
+                                <td>
+                                    <div class="row justify-content-center align-items-center">
+                                        <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_req.php?id=<?php echo $row['req_id'];?>">
+                                            <i class="fas fa-pencil-alt"></i></a>
+                                        <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_req.php?id=<?php echo $row['req_id'];?>">
+                                            <i class="fas fa-trash"></i></a>
+                                        <button class="btn btn-outline-secondary view_data" id="<?php echo $row['req_id'];?>" style="float: left"><i class="fas fa-list"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
 			                </tbody>
+                              <?php }?>
 			              </table>
 			            </div>
 					</div>
