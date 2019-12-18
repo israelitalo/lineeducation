@@ -90,31 +90,31 @@
 			                  </tr>
 			                </thead>
                               <?php
-                              if(isset($_POST['busca']) && isset($_POST['checkbox_req_id']) && isset($_POST['checkbox_matricula'])){
-                                  $_SESSION['msg'] = "Selecione apenas um filtro de busca: matrícula ou requerimento.";
-                                  header("Location: relatorio_de_req.php");
-                              }
-                              else if(empty($_POST['busca']) && empty($_POST['checkbox_matricula']) || empty($_POST['busca']) && empty($_POST['checkbox_req_id'])){
-                                  $sql = "SELECT * FROM requerimento";
-                              }
-                              else if(isset($_POST['busca']) && isset($_POST['checkbox_matricula'])){
-                                  $matricula = $_POST['busca'];
-                                  $sql = "SELECT * FROM requerimento WHERE req_fun_matricula = '$matricula'";
-                              }
-                              else if(isset($_POST['busca']) && isset($_POST['checkbox_req_id'])){
-                                  $req_id = $_POST['busca'];
-                                  $sql = "SELECT * FROM requerimento WHERE req_id = '$req_id'";
-                              }
-                              else if(isset($_POST['busca']) && empty($_POST['checkbox_matricula'])){
-                                  $_SESSION['msg'] = "Para pesquisar por matrícula, selecione a opção matrícula.";
-                                  header("Location: relatorio_de_req.php");
-                              }
-                              else if(isset($_POST['busca']) && empty($_POST['checkbox_req_id'])){
-                                  $_SESSION['msg'] = "Para pesquisar por nº de requerimento, selecione a opção requerimento.";
-                                  header("Location: relatorio_de_req.php");
-                              }
-                              $stmt = mysqli_query($conexao, $sql);
-                              while ($row = mysqli_fetch_array($stmt)){?>
+                                  if(isset($_POST['busca']) && isset($_POST['checkbox_req_id']) && isset($_POST['checkbox_matricula'])){
+                                      $_SESSION['msg'] = "Selecione apenas um filtro de busca: matrícula ou requerimento.";
+                                      header("Location: relatorio_de_req.php");
+                                  }
+                                  else if(empty($_POST['busca']) && empty($_POST['checkbox_matricula']) || empty($_POST['busca']) && empty($_POST['checkbox_req_id'])){
+                                      $sql = "SELECT * FROM requerimento";
+                                  }
+                                  else if(isset($_POST['busca']) && isset($_POST['checkbox_matricula'])){
+                                      $matricula = $_POST['busca'];
+                                      $sql = "SELECT * FROM requerimento WHERE req_fun_matricula = '$matricula'";
+                                  }
+                                  else if(isset($_POST['busca']) && isset($_POST['checkbox_req_id'])){
+                                      $req_id = $_POST['busca'];
+                                      $sql = "SELECT * FROM requerimento WHERE req_id = '$req_id'";
+                                  }
+                                  else if(isset($_POST['busca']) && empty($_POST['checkbox_matricula'])){
+                                      $_SESSION['msg'] = "Para pesquisar por matrícula, selecione a opção matrícula.";
+                                      header("Location: relatorio_de_req.php");
+                                  }
+                                  else if(isset($_POST['busca']) && empty($_POST['checkbox_req_id'])){
+                                      $_SESSION['msg'] = "Para pesquisar por nº de requerimento, selecione a opção requerimento.";
+                                      header("Location: relatorio_de_req.php");
+                                  }
+                                  $stmt = mysqli_query($conexao, $sql);
+                                  while ($row = mysqli_fetch_array($stmt)){?>
 			                <tbody>
                             <tr>
                                 <td><?php echo $row['req_id'];?></td>
@@ -133,11 +133,11 @@
                                 <td><?php echo date('d/m/Y', strtotime($rowNome['req_volta']));?></td>
                                 <td>
                                     <div class="row justify-content-center align-items-center">
-                                        <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_req.php?id=<?php echo $row['req_fun_matricula'];?>">
+                                        <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_req.php?id=<?php echo $row['req_id'];?>">
                                             <i class="fas fa-pencil-alt"></i></a>
-                                        <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_req.php?id=<?php echo $row['req_fun_matricula'];?>">
+                                        <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_req.php?id=<?php echo $row['req_id'];?>">
                                             <i class="fas fa-trash"></i></a>
-                                        <button class="btn btn-outline-secondary view_data" id="<?php echo $row['req_fun_matricula'];?>" style="float: left"><i class="fas fa-list"></i></button>
+                                        <button class="btn btn-outline-secondary view_data" id="<?php echo $row['req_id'];?>" style="float: left"><i class="fas fa-list"></i></button>
                                     </div>
                                 </td>
                             </tr>

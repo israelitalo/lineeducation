@@ -62,7 +62,7 @@
 						<form action="cadastrar_req.php" method="POST">
 							<div class="input-group">
 								<!--input de matricula do requerente -->
-                                <select class='form-control view_data' id="fun_matricula" type='number' name='req_fun_matricula' required='number' style='float: left; margin-right: auto'>
+                                <select class='form-control view_data' style="cursor: pointer" id="fun_matricula" type='number' name='req_fun_matricula' required='number' style='float: left; margin-right: auto'>
                                     <option>Matrícula</option>
                                     <!--Coletando as matrículas do banco de dados-->
                                      <?php $sql = 'SELECT fun_matricula, fun_nome FROM funcionario';
@@ -96,7 +96,7 @@
                                 </script>
 							</div><br>
 							<div class="form-group"><!--input com opções de tipo de req. -->
-							    <select class="form-control" name="req_tipo_req" >
+							    <select class="form-control" name="req_tipo_req" style="cursor: pointer">
 							      <option>Tipo de Requerimento</option>
 							      <option>FOLGA</option>
 							      <option>FÉRIAS</option>
@@ -113,13 +113,13 @@
 							<div class="input-group">
 								<!--input de entrada de req.-->
 								<span class="h5 espaco">Entrada: </span>
-								<input class="form-control tamanho_input_req2" type="date" name="req_entrada" placeholder="Entrada" required="date">
+								<input class="form-control tamanho_input_req2" style="cursor: pointer" type="date" name="req_entrada" placeholder="Entrada" required="date">
 								<!--input de deferimento de req. -->
 								<span class="h5 espaco">Deferimento: </span>
-								<input class="form-control tamanho_input_req2" type="date" name="req_deferimento" placeholder="Deferimento" required="date">
+								<input class="form-control tamanho_input_req2" style="cursor: pointer" type="date" name="req_deferimento" placeholder="Deferimento" required="date">
 								<!--input de volta de req. -->
                                 <span class="h5 espaco">Volta: </span>
-                                <input class="form-control" type="date" name="req_volta" placeholder="Volta" required="date">
+                                <input class="form-control" style="cursor: pointer" type="date" name="req_volta" placeholder="Volta" required="date">
 							</div><br>
                             <div class="input-group">
 								<!--Botão de salvar -->

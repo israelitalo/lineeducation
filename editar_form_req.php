@@ -6,11 +6,11 @@
     if(isset($_GET['id'])){
         $req_id = $_GET['id'];
 
-        $sql = "SELECT * FROM funcionario f, requerimento r WHERE r.req_fun_matricula = '$req_id' AND f.fun_matricula = '$req_id'";
+        $sql = "SELECT * FROM funcionario f, requerimento r WHERE r.req_id = '$req_id' AND f.fun_matricula = r.req_fun_matricula";
         $stmt = mysqli_query($conexao, $sql);
-        $result = mysqli_fetch_assoc($stmt);
+        $row = mysqli_fetch_assoc($stmt);
 
-        if(empty($result['req_fun_matricula']) || empty($result['req_id'])){
+        if(empty($row['req_fun_matricula']) || empty($row['req_id'])){
             $_SESSION['msg'] = "Dados imcompatíveis para alteração.";
             header("Location: relatorio_de_req.php");
             exit;
@@ -81,15 +81,17 @@ if(isset($_SESSION['msg'])){
                 <form action="editar_req_submit.php" method="POST">
                     <div class="input-group">
                         <!--input de matricula do requerente -->
+                        <input type="hidden" name="id" value="<?php echo $row['req_id'];?>">
+                        <input type="hidden" name="funcionario" value="<?php echo $row['fun_nome'];?>">
                         <select class='form-control view_data' id="fun_matricula" type='number' name='req_fun_matricula' required='number' style='float: left; margin-right: auto'>
-                            <option><?php echo $result['req_fun_matricula'];?></option>
+                            <option><?php echo $row['req_fun_matricula'];?></option>
                         </select>
                         <input class="form-control" id="campo_funcionario" name="nome_funcionario" type="text" placeholder="Nome do funcionário"
-                               style="float: right; margin-left: 20px" disabled value="<?php echo $result['fun_nome'];?>">
+                               style="float: right; margin-left: 20px" disabled value="<?php echo $row['fun_nome'];?>">
                     </div><br>
                     <div class="form-group"><!--input com opções de tipo de req. -->
                         <select class="form-control" name="req_tipo_req" >
-                            <option><?php echo $result['req_tipo_req'];?></option>
+                            <option><?php echo $row['req_tipo_req'];?></option>
                             <option>FOLGA</option>
                             <option>FÉRIAS</option>
                             <option>AUMENTO SALARIAL</option>
@@ -97,21 +99,21 @@ if(isset($_SESSION['msg'])){
                         </select>
                     </div>
                     <div class="form-group"><!--area de texto de tap_req -->
-                        <textarea class="form-control" name="req_descricao" rows="3" placeholder="Descrição" required="text"><?php echo $result['req_descricao'];?></textarea>
+                        <textarea class="form-control" name="req_descricao" rows="3" placeholder="Descrição" required="text"><?php echo $row['req_descricao'];?></textarea>
                     </div>
                     <div class="form-group"><!--area de texto de despacho -->
-                        <textarea class="form-control" name="req_despacho" rows="3" placeholder="despacho/encaminhamento" required="text"><?php echo $result['req_despacho'];?></textarea>
+                        <textarea class="form-control" name="req_despacho" rows="3" placeholder="despacho/encaminhamento" required="text"><?php echo $row['req_despacho'];?></textarea>
                     </div>
                     <div class="input-group">
                         <!--input de entrada de req.-->
                         <span class="h5 espaco">Entrada: </span>
-                        <input class="form-control tamanho_input_req2" type="date" name="req_entrada" placeholder="Entrada" required="date" value="<?php echo $result['req_entrada'];?>">
+                        <input class="form-control tamanho_input_req2" style="cursor: pointer" type="date" name="req_entrada" placeholder="Entrada" required="date" value="<?php echo $row['req_entrada'];?>">
                         <!--input de deferimento de req. -->
                         <span class="h5 espaco">Deferimento: </span>
-                        <input class="form-control tamanho_input_req2" type="date" name="req_deferimento" placeholder="Deferimento" required="date" value="<?php echo $result['req_deferimento'];?>">
+                        <input class="form-control tamanho_input_req2" style="cursor: pointer" type="date" name="req_deferimento" placeholder="Deferimento" required="date" value="<?php echo $row['req_deferimento'];?>">
                         <!--input de volta de req. -->
                         <span class="h5 espaco">Volta: </span>
-                        <input class="form-control" type="date" name="req_volta" placeholder="Volta" required="date" value="<?php echo $result['req_volta'];?>">
+                        <input class="form-control" type="date" style="cursor: pointer" name="req_volta" placeholder="Volta" required="date" value="<?php echo $row['req_volta'];?>">
                     </div><br>
                     <div class="input-group">
                         <!--Botão de salvar -->

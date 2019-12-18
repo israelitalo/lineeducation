@@ -19,7 +19,6 @@
         $numero = $_POST['fun_numero'];
 
         $sql = "UPDATE funcionario SET fun_nome = '$nome', fun_celular = '$celular', fun_rg = '$rg', fun_cpf = '$cpf', fun_cargo = '$cargo', fun_local_trabalho = '$local_trabalho', fun_rua = '$rua', fun_numero = '$numero', fun_bairro = '$bairro', fun_cidade = '$cidade', fun_estado = '$estado' WHERE fun_matricula = '$matricula'";
-        //$stmt = mysqli_query($conexao, $sql);
 
         if($stmt = mysqli_query($conexao, $sql)){
             $_SESSION['msg'] = "Funcionário alterado com sucesso.";
@@ -27,13 +26,13 @@
             exit;
         }else{
             $_SESSION['msg'] = "Erro ao alterar dados do funcionário ".$nome;
-            header("Location: editar.form.fun.php");
+            header("Location: editar_form_fun.php");
             exit;
         }
     }
     else{
         $_SESSION['msg'] = "Erro ao alterar dados do funcionário ".$nome;
-        header("Location: editar.form.fun.php");
+        header("Location: editar_form_fun.php");
         exit;
     }
 ?>
