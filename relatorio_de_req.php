@@ -62,7 +62,7 @@
 					<div class="area_de_relatorio_req"><br>
 						<div class="table-responsive"><!--tabela de relatorio -->
                             <div class="col-12 row justify-content-end">
-                                <a class="btn btn-success" href="cadastro_de_fun.php" style="float: left; margin-right: 10px"><i class="fas fa-plus"></i> Adicionar</a>
+                                <a class="btn btn-success" href="cadastro_de_req.php" style="float: left; margin-right: 10px"><i class="fas fa-plus"></i> Adicionar</a>
                                 <button type="submit" class="btn btn-dark" style="float: left; margin-right: 10px">Imprimir</button>
                             </div>
                             <div class="col-4">
@@ -133,11 +133,11 @@
                                 <td><?php echo date('d/m/Y', strtotime($rowNome['req_volta']));?></td>
                                 <td>
                                     <div class="row justify-content-center align-items-center">
-                                        <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_req.php?id=<?php echo $row['req_id'];?>">
+                                        <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_req.php?id=<?php echo $row['req_fun_matricula'];?>">
                                             <i class="fas fa-pencil-alt"></i></a>
-                                        <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_req.php?id=<?php echo $row['req_id'];?>">
+                                        <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_req.php?id=<?php echo $row['req_fun_matricula'];?>">
                                             <i class="fas fa-trash"></i></a>
-                                        <button class="btn btn-outline-secondary view_data" id="<?php echo $row['req_id'];?>" style="float: left"><i class="fas fa-list"></i></button>
+                                        <button class="btn btn-outline-secondary view_data" id="<?php echo $row['req_fun_matricula'];?>" style="float: left"><i class="fas fa-list"></i></button>
                                     </div>
                                 </td>
                             </tr>
