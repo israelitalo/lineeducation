@@ -43,7 +43,7 @@
                     <div class="area_de_relatorio_fun"><br>
                         <div class="table-responsive"><!--tabela de relatorio -->
                             <div>
-                                <a class="btn btn-success" href="cadastro_de_req.php" style="float: left; margin-right: 10px"><i class="fas fa-plus"></i> Adicionar</a>
+                                <a class="btn btn-success" href="cadastro_de_fun.php" style="float: left; margin-right: 10px"><i class="fas fa-plus"></i> Adicionar</a>
                                 <button type="submit" class="btn btn-dark" style="float: left; margin-right: 10px">Imprimir</button>
                                 <form method="POST" style="float: left">
                                     <input class="InputMatricula_fun" type="text" name="busca" placeholder="Buscar por Matricula" style="margin-right: 5px">
@@ -142,7 +142,6 @@
                 </div>
             </div>
         </div>
-        <!--Tentativa do botão visualizar-->
         <script type="text/javascript">
             $(document).ready(function () {
                 $(document).on('click','.view_data', function () {

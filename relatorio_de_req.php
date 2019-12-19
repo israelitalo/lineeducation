@@ -135,7 +135,7 @@
                                     <div class="row justify-content-center align-items-center">
                                         <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_req.php?id=<?php echo $row['req_id'];?>">
                                             <i class="fas fa-pencil-alt"></i></a>
-                                        <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_req.php?id=<?php echo $row['req_id'];?>">
+                                        <a class="btn btn-danger" data-confirm="Deseja realmente excluir o requerimento selecionado?" style="float: left; margin-right: 15px" href="excluir_req.php?id=<?php echo $row['req_id'];?>">
                                             <i class="fas fa-trash"></i></a>
                                         <button class="btn btn-outline-secondary view_data" id="<?php echo $row['req_id'];?>" style="float: left"><i class="fas fa-list"></i></button>
                                     </div>
@@ -149,6 +149,7 @@
 				</div>
 			</div>
 		</div>
+        <script type="text/javascript" src="js/modal_excluir.js"></script>
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 	</body>
