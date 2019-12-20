@@ -109,7 +109,7 @@
                                         <div class="row justify-content-center align-items-center">
                                             <a class="btn btn-info" style="float: left; margin-right: 15px" href="editar_form_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
                                                 <i class="fas fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger" style="float: left; margin-right: 15px" href="excluir_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
+                                            <a class="btn btn-danger" style="float: left; margin-right: 15px" data-confirm="Deseja realmente excluir o funcionario selecionado?" href="excluir_fun.php?matricula=<?php echo $row['fun_matricula'];?>">
                                                 <i class="fas fa-trash"></i></a>
                                             <button class="btn btn-outline-secondary view_data" id="<?php echo $row['fun_matricula'];?>" style="float: left"><i class="fas fa-list"></i></button>
                                         </div>
@@ -162,6 +162,7 @@
                 });
             });
         </script>
+        <script type="text/javascript" src="js/modal_excluir_fun.js"></script>
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     </body>

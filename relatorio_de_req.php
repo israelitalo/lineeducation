@@ -90,7 +90,7 @@
 			                  </tr>
 			                </thead>
                               <?php
-                                  if(isset($_POST['busca']) && isset($_POST['checkbox_req_id']) && isset($_POST['checkbox_matricula'])){
+                                  if(isset($_POST['checkbox_req_id']) && isset($_POST['checkbox_matricula'])){
                                       $_SESSION['msg'] = "Selecione apenas um filtro de busca: matrícula ou requerimento.";
                                       header("Location: relatorio_de_req.php");
                                   }
@@ -149,7 +149,7 @@
 				</div>
 			</div>
 		</div>
-        <script type="text/javascript" src="js/modal_excluir.js"></script>
+        <script type="text/javascript" src="js/modal_excluir_req.js"></script>
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 	</body>

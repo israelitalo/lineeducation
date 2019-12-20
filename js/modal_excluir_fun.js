@@ -6,14 +6,14 @@ $(document).ready(function () {
                 '<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                 '  <div class="modal-dialog" role="document">\n' +
                 '    <div class="modal-content">\n' +
-                '      <div class="modal-header bg-warning">\n' +
-                '        <h5 class="modal-title text-white" id="exampleModalLabel">Excluir Requerimento</h5>\n' +
+                '      <div class="modal-header bg-dark">\n' +
+                '        <h5 class="modal-title text-white" id="exampleModalLabel">Excluir Funcionário</h5>\n' +
                 '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
                 '          <span aria-hidden="true">&times;</span>\n' +
                 '        </button>\n' +
                 '      </div>\n' +
                 '      <div class="modal-body">\n' +
-                '        Deseja realmente excluir este requerimento?\n' +
+                '        Deseja realmente excluir este funcionário?\n' +
                 '      </div>\n' +
                 '      <div class="modal-footer">\n' +
                 '        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>\n' +
