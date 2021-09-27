@@ -78,15 +78,15 @@
 			              <table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
 			                <thead class="thead-dark">
 			                  <tr>
-                                <th>Código</th>
-                                <th>Matrícula</th>
+                          <th>Código</th>
+                          <th>Matrícula</th>
 			                  	<th>Funcionário</th>
-                                <th>Requerimento</th>
-                                <th>Local de Trabalho</th>
+                          <th>Requerimento</th>
+                          <th>Local de Trabalho</th>
 			                    <th>Solicitação</th>
 			                    <th>Deferimento</th>
 			                    <th>Volta</th>
-                                <th>Operações</th>
+                          <th>Operações</th>
 			                  </tr>
 			                </thead>
                               <?php

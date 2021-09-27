@@ -2,7 +2,7 @@
 
 define('HOST', '127.0.0.1');
 define('USUARIO', 'root');
-define('SENHA', 'root');
+define('SENHA', '');
 define('DB', 'lineeducation');
 
 /*define('HOST', 'localhost');
